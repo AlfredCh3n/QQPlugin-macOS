@@ -1,3 +1,4 @@
+Podfile.lock
 fastlane/FastlaneRunner
 fastlane/report.xml
 *.zip

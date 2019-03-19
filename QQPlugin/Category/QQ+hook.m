@@ -100,6 +100,7 @@ static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关
     [self hook_appendReceiveMessageModel:msgModels msgSource:arg2];
     
     [msgModels enumerateObjectsUsingBlock:^(BHMessageModel *msgModel, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self annoyingReplyWithMsg:msgModel];
         [self autoReplyWithMsg:msgModel];
     }];
 }
@@ -116,6 +117,25 @@ static char tkAutoReplyWindowControllerKey;         //  自动回复窗口的关
     [[TKWebServerManager shareManager] endServer];
     
     [self hook_notifyForceLogoutWithAccount:arg1 type:arg2 tips:arg3];
+}
+
+#pragma mark - auto reply annoyning
+/**
+搞人的自动回复
+*/
+- (void)annoyingReplyWithMsg:(BHMessageModel *)msgModel {
+//    if ((IS_VALID_STRING(msgModel.groupCode) || IS_VALID_STRING(msgModel.discussGroupUin)) && !false) return;//group
+//    if (!(IS_VALID_STRING(msgModel.groupCode) || IS_VALID_STRING(msgModel.discussGroupUin)) && !true) return;
+    long long uin = [[self getUinByMessageModel:msgModel] longLongValue];
+    if ([msgModel.groupCode isEqualToString:@"945214154"] || [msgModel.senderUin isEqualToString:@"55896749"] || [msgModel.senderUin isEqualToString:@"1325261979"] || [msgModel.groupCode isEqualToString:@"835907850"]) {
+//        [self sendTextMessage:[NSString stringWithFormat:@"nickname:%@, smallContent:%@, uin:%@ senderUin:%@, summaryTextContent:%@ %@, %@", msgModel.nickname, msgModel.smallContent, msgModel.uin, msgModel.senderUin, msgModel.summaryTextContent, msgModel.groupCode, msgModel.discussGroupUin] uin:uin sessionType:msgModel.msgSessionType delay:0];
+//        if ([msgModel.senderUin isEqualToString:@"837540043"]) {
+//            [self sendTextMessage:@"你好鸭 杰尼哥" uin:uin sessionType:msgModel.msgSessionType delay:1];
+//        }
+        if ([msgModel.senderUin isEqualToString:@"237861218"]) {
+            [self sendTextMessage:@"你好鸭 月子弟" uin:uin sessionType:msgModel.msgSessionType delay:1];
+        }
+    }
 }
 
 #pragma mark - Other
