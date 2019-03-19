@@ -1,9 +1,16 @@
-# Xcode
-#
-.DS_Store
+fastlane/FastlaneRunner
+fastlane/report.xml
+*.zip
+*.ipa
+*.mode*v*
+*.pbxuser
+*.xccheckout
+#*.xcbkptlist
+#*.xcscheme
+#*.xcworkspacedata
 *.xcuserstate
-
-# CocoaPods
-#
+build/
 Pods/
-Podfile.lock
+.DS_Store
+._.*
+xcuserdata
